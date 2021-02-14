@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import { default as ScrollDemo, Item } from './ScrollDemo';
+
+function generateItems(n: number): Item[] {
+	let items = [] as Item[];
+	for (let i = 0; i < n; i++) {
+		items.push({
+			height: Math.max(50, Math.floor((Math.random() * 1000) % 400))
+		});
+	}
+	return items;
+}
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const items = generateItems(10_000);
+	return <ScrollDemo items={items} />;
 }
 
 export default App;
